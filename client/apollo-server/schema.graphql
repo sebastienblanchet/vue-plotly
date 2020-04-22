@@ -31,8 +31,9 @@ type Data {
 
 type Layout {
   title: String
+  paper_bgcolor: String
 }
 
 type Attributes {
-  test: String
+  displayModeBar: Boolean
 }

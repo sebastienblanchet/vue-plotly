@@ -4,11 +4,15 @@
       <v-col cols="4">
         <v-card elevation="0" class="mx-5">
           <v-card-title>Layout</v-card-title>
-          <editor class="layout" v-model="getPlotly.layout" :show-btns="false" />
+          <editor class="editor" v-model="getPlotly.layout" :show-btns="false" />
         </v-card>
         <v-card elevation="0" class="mx-5">
           <v-card-title>Data</v-card-title>
-          <editor class="data" v-model="getPlotly.data" :show-btns="false" />
+          <editor class="editor" v-model="getPlotly.data" :show-btns="false" />
+        </v-card>
+        <v-card elevation="0" class="mx-5">
+          <v-card-title>Attributes</v-card-title>
+          <editor class="editor" v-model="getPlotly.attr" :show-btns="false" />
         </v-card>
       </v-col>
       <v-col cols="8 text--center">
@@ -51,9 +55,10 @@ export default {
             }
             layout {
               title
+              paper_bgcolor
             }
             attr {
-              test
+              displayModeBar
             }
           }
         }
@@ -102,3 +107,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  .editor {
+    max-width: %100;
+  }
+</style>

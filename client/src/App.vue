@@ -6,7 +6,7 @@
       </div>
       <v-spacer></v-spacer>
       <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        href="https://github.com/sebastienblanchet/vue-plotly/"
         target="_blank"
         text
       >

@@ -1,5 +1,6 @@
 <template>
-  <v-card>
+  <v-card class="mx-5 my-5">
+    <v-card-text>
     <v-row>
       <v-card elevation="0" class="mx-5">
         <!-- returns object -->
@@ -17,13 +18,13 @@
         <generic v-if="selected.length > 0" :propId="selected" />
       </v-col>
     </v-row>
+    </v-card-text>
   </v-card>
 </template>
 
 <script>
 import gql from "graphql-tag";
 import generic from "./generic.vue";
-// import editor from "vue-json-editor";
 
 export default {
   name: "picker",
