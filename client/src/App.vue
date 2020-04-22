@@ -1,9 +1,15 @@
 <template>
   <v-app>
     <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center headline font-weight-bold">Vue-Plotly</div>
+      <div class="d-flex align-center headline font-weight-bold">
+        Vue-Plotly
+      </div>
       <v-spacer></v-spacer>
-      <v-btn href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank" text>
+      <v-btn
+        href="https://github.com/sebastienblanchet/vue-plotly/"
+        target="_blank"
+        text
+      >
         <span class="mr-2">See on GitHub</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
@@ -24,15 +30,7 @@ export default {
   components: {
     graphpicker
   },
-  data() {
-    return {
-      features: [
-        { text: "plotly.js methods and events", icon: "fa-bar-chart" },
-        { text: "Data reactivity", icon: "fa-bolt" },
-        { text: "Redraw on resizing", icon: "fa-arrows-alt" }
-      ]
-    };
-  },
+  data: () => ({}),
   computed: {
     code() {
       const fromAttr = Object.keys(this.data.attr)

@@ -1,34 +1,27 @@
 # Vue-plotly
 
+#### Sebastien Blanchet
+
 Forked `/example` from [this repo](https://github.com/David-Desmaisons/vue-plotly).
 
-## Build
-Project setup
-```
-npm install
+## Client
+
+Start GraphQL server:
+```bash
+cd client
+npm install && npm run apollo
 ```
 
-Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-Compiles and minifies for production
-```
-npm run build
+Start Vue.js app:
+```bash
+cd client
+npm install && npm run serve
 ```
 
-Run your tests
-```
-npm run test
-```
+## GraphQL Schema
 
-Lints and fixes files
-```
-npm run lint
-```
+See more at [localhost:4040/graphql](http://localhost:4000/graphql)
 
-Run your unit tests
-```
-npm run test:unit
-```
+## TODO
+
+* Hookup apollo-server to MongoDB
