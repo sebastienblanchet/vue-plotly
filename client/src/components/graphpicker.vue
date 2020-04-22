@@ -1,34 +1,20 @@
 <template>
   <v-card>
     <v-row>
-      <v-col cols="3">
-        <v-card elevation="0" class="mx-5">
-          <!-- returns object -->
-          <v-select
-            v-model="selected"
-            item-value="id"
-            item-text="name"
-            label="Display"
-            :items="getPlots"
-          ></v-select>
-        </v-card>
-        <v-card elevation="0" class="mx-5">
-          <v-card-title>Layout</v-card-title>
-          <editor class="layout" v-model="selected.data.layout" :show-btns="false" />
-        </v-card>
-        <v-card elevation="0" class="mx-5">
-          <v-card-title>Data</v-card-title>
-          <editor class="data" v-model="selected.data.data" :show-btns="false" />
-        </v-card>
-      </v-col>
-      <v-col cols="9">
-        <v-row>
-          <v-col>
-            <highlight-code lang="javascript" :code="code" />
-          </v-col>
-        </v-row>
-        <!-- wrapper -->
-        <generic :plotId="selected" />
+      <v-card elevation="0" class="mx-5">
+        <!-- returns object -->
+        <v-select
+          v-model="selected"
+          item-text="name"
+          item-value="id"
+          label="Display"
+          :items="getPlots"
+        ></v-select>
+      </v-card>
+    </v-row>
+    <v-row>
+      <v-col cols="12">
+        <generic v-if="selected.length > 0" :propId="selected" />
       </v-col>
     </v-row>
   </v-card>
@@ -36,21 +22,18 @@
 
 <script>
 import gql from "graphql-tag";
-import editor from "vue-json-editor";
-import simple from "./simple.js";
-import contour from "./contour.js";
-import histogram from "./histogram.js";
-import histogram2D from "./2D-histogram.js";
-import pie from "./pie.js";
+import generic from "./generic.vue";
+// import editor from "vue-json-editor";
 
 export default {
   name: "picker",
   components: {
-    editor
+    // editor
+    generic
   },
   data: () => ({
     getPlots: null,
-    selected: null
+    selected: ""
   }),
   apollo: {
     getPlots: gql`
@@ -62,18 +45,9 @@ export default {
       }
     `
   },
-  computed: {
-    code() {
-      const {
-        selected: {
-          data: { attr }
-        }
-      } = this;
-      const fromAttr = Object.keys(attr)
-        .map(key => `:${key}="${attr[key]}"`)
-        .join(" ");
-      return `<plotly :data="data" :layout="layout" ${fromAttr}/>`;
-    }
+  created() {
+    // TODO fix this cheat
+    this.selected = this.getPlots ? this.getPlots[0].id : "abc";
   }
 };
 </script>

@@ -25,6 +25,7 @@ type Data {
   type: String
   x: [Float]
   y: [Float]
+  "will have to unpack since grapql does not support matrices"
   z: [Float]
 }
 

@@ -4,7 +4,6 @@ import {
 } from "./mocks.json";
 
 // TODO hookup with db
-
 export default {
   JSON: GraphQLJSON,
   Query: {

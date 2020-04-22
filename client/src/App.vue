@@ -17,7 +17,6 @@
     <v-content>
       <v-container fluid>
         <graphpicker />
-        <generic propId="abc"/>
       </v-container>
     </v-content>
   </v-app>
@@ -25,13 +24,11 @@
 
 <script>
 import graphpicker from "./components/graphpicker.vue";
-import generic from "./components/generic.vue";
 
 export default {
   name: "app",
   components: {
-    graphpicker,
-    generic
+    graphpicker
   },
   data: () => ({}),
   computed: {
