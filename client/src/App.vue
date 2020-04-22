@@ -1,9 +1,15 @@
 <template>
   <v-app>
     <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center headline font-weight-bold">Vue-Plotly</div>
+      <div class="d-flex align-center headline font-weight-bold">
+        Vue-Plotly
+      </div>
       <v-spacer></v-spacer>
-      <v-btn href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank" text>
+      <v-btn
+        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        target="_blank"
+        text
+      >
         <span class="mr-2">See on GitHub</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>

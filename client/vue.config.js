@@ -1,4 +1,11 @@
 module.exports = {
   publicPath: "./",
-  transpileDependencies: ["vuetify"]
+  transpileDependencies: ["vuetify"],
+
+  pluginOptions: {
+    apollo: {
+      enableMocks: true,
+      enableEngine: false
+    }
+  }
 };

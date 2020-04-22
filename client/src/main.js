@@ -12,6 +12,7 @@ import "vue-draggable-resizable/dist/VueDraggableResizable.css";
 import "highlight.js/styles/default.css";
 import "highlight.js/styles/mono-blue.css";
 import vuetify from "./plugins/vuetify";
+import { createProvider } from "./vue-apollo";
 
 Vue.component("vue-draggable-resizable", VueDraggableResizable);
 Vue.component("plotly", Plotly);
@@ -28,5 +29,6 @@ Vue.config.productionTip = false;
 
 new Vue({
   vuetify,
+  apolloProvider: createProvider(),
   render: h => h(App)
 }).$mount("#app");
