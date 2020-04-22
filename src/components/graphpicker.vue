@@ -3,15 +3,16 @@
     <v-row>
       <v-col cols="3">
         <v-card elevation="0" class="mx-5">
-          <v-select v-model="selected" item-text="display" label="Display" :items="generics">
+          <!-- returns object -->
+          <v-select v-model="selected" return-object item-text="display" label="Display" :items="generics">
           </v-select>
         </v-card>
         <v-card elevation="0" class="mx-5">
-          <v-card-tile>Layout</v-card-tile>
+          <v-card-title>Layout</v-card-title>
           <editor class="layout" v-model="selected.data.layout" :show-btns="false" />
         </v-card>
         <v-card elevation="0" class="mx-5">
-          <v-card-tile>Data</v-card-tile>
+          <v-card-title>Data</v-card-title>
           <editor class="data" v-model="selected.data.data" :show-btns="false" />
         </v-card>
       </v-col>
