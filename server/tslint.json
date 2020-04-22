@@ -1,8 +1,0 @@
-{
-  "linterOptions": {
-    "exclude": [
-      "src/__gql-types"
-    ]
-  },
-  "extends": "tslint-config-airbnb"
-}

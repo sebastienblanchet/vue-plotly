@@ -56,17 +56,8 @@ export default {
   data() {
     return {
       generics: [simple, contour, histogram, pie, histogram2D],
-      selected: simple,
-      hello: ""
+      selected: simple
     };
-  },
-  apollo: {
-    // Simple query that will update the 'hello' vue property
-    hello: gql`
-      {
-        hello
-      }
-    `
   },
   computed: {
     code() {
