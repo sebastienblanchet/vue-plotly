@@ -1,6 +1,6 @@
 <template>
   <div v-if="getPlotly != null">
-    <v-row>
+    <v-row align="center">
       <v-col cols="4">
         <v-card elevation="0" class="mx-5">
           <v-card-title>Layout</v-card-title>
@@ -11,15 +11,10 @@
           <editor class="data" v-model="getPlotly.data" :show-btns="false" />
         </v-card>
       </v-col>
-      <v-col cols="8">
-        <v-row>
-          <v-card>
-            <plotly v-bind="getPlotly.attr" :data="getPlotly.data" :layout="getPlotly.layout" />
-          </v-card>
-        </v-row>
-        <v-row>
-          <!-- <highlight-code lang="javascript" :code="code" /> -->
-        </v-row>
+      <v-col cols="8 text--center">
+        <v-card>
+          <plotly v-bind="getPlotly.attr" :data="getPlotly.data" :layout="getPlotly.layout" />
+        </v-card>
       </v-col>
     </v-row>
   </div>
@@ -73,23 +68,35 @@ export default {
   },
   computed: {},
   methods: {
-    vector2Matrix(idx) {
-      var cpy = this.getPlotly.data[0].z;
+    vector2Matrix(data) {
+      var cpy = data.z;
       var z = [];
 
-      const c = this.getPlotly.data[0].x.length;
-      const r = this.getPlotly.data[0].y.length;
-      while (cpy.length) {
-        z.push(cpy.splice(0, c));
-      }
+      const c = data.x.length;
+      const r = data.y.length;
 
-      this.getPlotly.data[0].z = z;
+      // check that square matrix provided
+      if( c == r) {
+        while (cpy.length) {
+          z.push(cpy.splice(0, c));
+        }
+      }
+      data.z = z;
+      return data;
     }
   },
   watch: {
     getPlotly() {
-      if (this.getPlotly.data[0].type === "surface") {
-        this.vector2Matrix();
+      // unpack z data
+      if (this.getPlotly.data) {
+        this.getPlotly.data.forEach(element => {
+          // check that the z data has not been processed yet
+          if (element.z && !element.z[0].length) {
+            var dimensions = [ element.z.length, element.z[0].length ];
+            console.log(dimensions);
+            element = this.vector2Matrix(element);
+          }
+        });
       }
     }
   }
