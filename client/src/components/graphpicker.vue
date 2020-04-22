@@ -10,24 +10,15 @@
             item-text="display"
             label="Display"
             :items="generics"
-          >
-          </v-select>
+          ></v-select>
         </v-card>
         <v-card elevation="0" class="mx-5">
           <v-card-title>Layout</v-card-title>
-          <editor
-            class="layout"
-            v-model="selected.data.layout"
-            :show-btns="false"
-          />
+          <editor class="layout" v-model="selected.data.layout" :show-btns="false" />
         </v-card>
         <v-card elevation="0" class="mx-5">
           <v-card-title>Data</v-card-title>
-          <editor
-            class="data"
-            v-model="selected.data.data"
-            :show-btns="false"
-          />
+          <editor class="data" v-model="selected.data.data" :show-btns="false" />
         </v-card>
       </v-col>
       <v-col cols="9">
@@ -49,6 +40,7 @@
 </template>
 
 <script>
+import gql from "graphql-tag";
 import editor from "vue-json-editor";
 import simple from "./simple.js";
 import contour from "./contour.js";
@@ -64,8 +56,17 @@ export default {
   data() {
     return {
       generics: [simple, contour, histogram, pie, histogram2D],
-      selected: simple
+      selected: simple,
+      hello: ""
     };
+  },
+  apollo: {
+    // Simple query that will update the 'hello' vue property
+    hello: gql`
+      {
+        hello
+      }
+    `
   },
   computed: {
     code() {

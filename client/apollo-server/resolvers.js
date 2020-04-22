@@ -7,14 +7,18 @@ export default {
 
 
   Query: {
-    hello: (root, { name }) => `Hello ${name || 'World'}!`,
+    hello: (root, {
+      name
+    }) => `Hello ${name || 'World'}!`,
 
   },
 
   Mutation: {
     myMutation: (root, args, context) => {
       const message = 'My mutation completed!'
-      context.pubsub.publish('hey', { mySub: message })
+      context.pubsub.publish('hey', {
+        mySub: message
+      })
       return message
     },
 
@@ -22,7 +26,9 @@ export default {
 
   Subscription: {
     mySub: {
-      subscribe: (parent, args, { pubsub }) => pubsub.asyncIterator('hey'),
+      subscribe: (parent, args, {
+        pubsub
+      }) => pubsub.asyncIterator('hey'),
     },
 
   },
