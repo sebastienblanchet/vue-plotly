@@ -17,7 +17,7 @@
     <v-content>
       <v-container fluid>
         <graphpicker />
-        <generic />
+        <generic propId="abc"/>
       </v-container>
     </v-content>
   </v-app>
@@ -33,15 +33,7 @@ export default {
     graphpicker,
     generic
   },
-  data() {
-    return {
-      features: [
-        { text: "plotly.js methods and events", icon: "fa-bar-chart" },
-        { text: "Data reactivity", icon: "fa-bolt" },
-        { text: "Redraw on resizing", icon: "fa-arrows-alt" }
-      ]
-    };
-  },
+  data: () => ({}),
   computed: {
     code() {
       const fromAttr = Object.keys(this.data.attr)

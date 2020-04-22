@@ -2,20 +2,37 @@
 scalar JSON
 scalar Upload
 
-
-
 type Query {
   "Test query with a parameter"
   hello(name: String): String!
-
+  "get all plot ids"
+  getIds: [String!]
+  "get a plot object"
+  getPlotly(id: ID!): Plotly!
 }
 
 type Mutation {
   myMutation: String!
-
 }
 
-type Subscription {
-  mySub: String!
+type Plotly {
+  id: ID!
+  data: [Data]
+  layout: Layout
+  attr: Attributes
+}
 
+type Data {
+  type: String
+  x: [Float]
+  y: [Float]
+  z: [Float]
+}
+
+type Layout {
+  title: String
+}
+
+type Attributes {
+  test: String
 }

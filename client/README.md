@@ -1,6 +1,4 @@
-# Vue-plotly
-
-Forked `/example` from [this repo](https://github.com/David-Desmaisons/vue-plotly).
+# Client
 
 ## Build
 Project setup
