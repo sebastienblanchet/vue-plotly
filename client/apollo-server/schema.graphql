@@ -3,11 +3,9 @@ scalar JSON
 scalar Upload
 
 type Query {
-  "Test query with a parameter"
-  hello(name: String): String!
-  "get all plot ids"
-  getIds: [String!]
-  "get a plot object"
+  "get all plot ids & name"
+  getPlots: [Plotly!]
+  "get a single plot object"
   getPlotly(id: ID!): Plotly!
 }
 
@@ -17,6 +15,7 @@ type Mutation {
 
 type Plotly {
   id: ID!
+  name: String
   data: [Data]
   layout: Layout
   attr: Attributes

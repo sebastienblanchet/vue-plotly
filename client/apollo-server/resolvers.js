@@ -8,22 +8,14 @@ import {
 export default {
   JSON: GraphQLJSON,
   Query: {
-    hello: (root, {
-      name
-    }) => `Hello ${name || 'World'}!`,
-    getIds: (root, {}) => {
-      return Object.keys(mocks);
+    getPlots: (root, {}) => {
+      return mocks;
     },
     getPlotly: (root, {
       id
     }) => {
-      // return new Promise((resolve, object) => {
-      //   mocks.find(id, (err, mock) => {
-      //     if (err) reject(err)
-      //     else resolve(mock)
-      //   });
-      // });
-      return mocks[id];
+      var index = mocks.findIndex(x => x.id === id);
+      return mocks[index];
     }
   },
   Mutation: {

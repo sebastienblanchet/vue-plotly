@@ -6,10 +6,10 @@
           <!-- returns object -->
           <v-select
             v-model="selected"
-            return-object
-            item-text="display"
+            item-value="id"
+            item-text="name"
             label="Display"
-            :items="generics"
+            :items="getPlots"
           ></v-select>
         </v-card>
         <v-card elevation="0" class="mx-5">
@@ -28,12 +28,7 @@
           </v-col>
         </v-row>
         <!-- wrapper -->
-        <plotly
-          class="graph"
-          v-bind="selected.data.attr"
-          :data="selected.data.data"
-          :layout="selected.data.layout"
-        />
+        <generic :plotId="selected" />
       </v-col>
     </v-row>
   </v-card>
@@ -53,11 +48,19 @@ export default {
   components: {
     editor
   },
-  data() {
-    return {
-      generics: [simple, contour, histogram, pie, histogram2D],
-      selected: simple
-    };
+  data: () => ({
+    getPlots: null,
+    selected: null
+  }),
+  apollo: {
+    getPlots: gql`
+      {
+        getPlots {
+          id
+          name
+        }
+      }
+    `
   },
   computed: {
     code() {
@@ -74,6 +77,7 @@ export default {
   }
 };
 </script>
+
 <style>
 .layout .jsoneditor-vue {
   height: 150px;
