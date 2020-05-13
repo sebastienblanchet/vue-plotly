@@ -1,23 +1,23 @@
 <template>
   <v-card class="mx-5 my-5">
     <v-card-text>
-    <v-row>
-      <v-card elevation="0" class="mx-5">
-        <!-- returns object -->
-        <v-select
-          v-model="selected"
-          item-text="name"
-          item-value="id"
-          label="Display"
-          :items="getPlots"
-        ></v-select>
-      </v-card>
-    </v-row>
-    <v-row>
-      <v-col cols="12">
-        <generic v-if="selected.length > 0" :propId="selected" />
-      </v-col>
-    </v-row>
+      <v-row>
+        <v-card elevation="0" class="mx-5">
+          <!-- returns object -->
+          <v-select
+            v-model="selected"
+            item-text="name"
+            item-value="id"
+            label="Display"
+            :items="getPlots"
+          ></v-select>
+        </v-card>
+      </v-row>
+      <v-row>
+        <v-col cols="12">
+          <generic v-if="selected.length > 0" :propId="selected" />
+        </v-col>
+      </v-row>
     </v-card-text>
   </v-card>
 </template>
